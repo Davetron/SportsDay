@@ -31,6 +31,6 @@
 		<g:message code="event.time.label" default="Time" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="time" precision="day"  value="${eventInstance?.time}"  />
+	<g:datePicker name="time" precision="minute"  value="${eventInstance?.time}"  />
 </div>
 

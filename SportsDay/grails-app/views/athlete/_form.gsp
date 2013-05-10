@@ -7,7 +7,7 @@
 		<g:message code="athlete.country.label" default="Country" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="country" name="country.id" from="${com.sportsday.Country.list()}" optionKey="id" required="" value="${athleteInstance?.country?.id}" class="many-to-one"/>
+	<g:select id="country" name="country.id" from="${com.sportsday.Country.list()}" optionKey="id" optionValue="name" required="" value="${athleteInstance?.country?.id}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: athleteInstance, field: 'name', 'error')} ">
