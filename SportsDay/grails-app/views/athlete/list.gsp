@@ -26,7 +26,9 @@
 					
 						<th><g:message code="athlete.country.label" default="Country" /></th>
 					
-						<g:sortableColumn property="name" title="${message(code: 'athlete.name.label', default: 'Name')}" />
+						<g:sortableColumn property="dnf" title="${message(code: 'athlete.dnf.label', default: 'Dnf')}" />
+					
+						<th><g:message code="athlete.event.label" default="Event" /></th>
 					
 					</tr>
 				</thead>
@@ -36,7 +38,9 @@
 					
 						<td><g:link action="show" id="${athleteInstance.id}">${fieldValue(bean: athleteInstance, field: "country")}</g:link></td>
 					
-						<td>${fieldValue(bean: athleteInstance, field: "name")}</td>
+						<td><g:formatBoolean boolean="${athleteInstance.dnf}" /></td>
+					
+						<td>${fieldValue(bean: athleteInstance, field: "event")}</td>
 					
 					</tr>
 				</g:each>

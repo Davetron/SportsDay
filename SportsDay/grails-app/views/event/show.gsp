@@ -23,6 +23,15 @@
 			</g:if>
 			<ol class="property-list event">
 			
+				<g:if test="${eventInstance?.name}">
+				<li class="fieldcontain">
+					<span id="name-label" class="property-label"><g:message code="event.name.label" default="Name" /></span>
+					
+						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${eventInstance}" field="name"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${eventInstance?.athletes}">
 				<li class="fieldcontain">
 					<span id="athletes-label" class="property-label"><g:message code="event.athletes.label" default="Athletes" /></span>
@@ -39,15 +48,6 @@
 					<span id="mens-label" class="property-label"><g:message code="event.mens.label" default="Mens" /></span>
 					
 						<span class="property-value" aria-labelledby="mens-label"><g:formatBoolean boolean="${eventInstance?.mens}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${eventInstance?.name}">
-				<li class="fieldcontain">
-					<span id="name-label" class="property-label"><g:message code="event.name.label" default="Name" /></span>
-					
-						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${eventInstance}" field="name"/></span>
 					
 				</li>
 				</g:if>

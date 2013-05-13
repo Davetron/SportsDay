@@ -32,17 +32,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${countryInstance?.athletes}">
-				<li class="fieldcontain">
-					<span id="athletes-label" class="property-label"><g:message code="country.athletes.label" default="Athletes" /></span>
-					
-						<g:each in="${countryInstance.athletes}" var="a">
-						<span class="property-value" aria-labelledby="athletes-label"><g:link controller="athlete" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
 			</ol>
 			<g:form>
 				<fieldset class="buttons">

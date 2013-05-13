@@ -32,11 +32,20 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${athleteInstance?.name}">
+				<g:if test="${athleteInstance?.dnf}">
 				<li class="fieldcontain">
-					<span id="name-label" class="property-label"><g:message code="athlete.name.label" default="Name" /></span>
+					<span id="dnf-label" class="property-label"><g:message code="athlete.dnf.label" default="Dnf" /></span>
 					
-						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${athleteInstance}" field="name"/></span>
+						<span class="property-value" aria-labelledby="dnf-label"><g:formatBoolean boolean="${athleteInstance?.dnf}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${athleteInstance?.event}">
+				<li class="fieldcontain">
+					<span id="event-label" class="property-label"><g:message code="athlete.event.label" default="Event" /></span>
+					
+						<span class="property-value" aria-labelledby="event-label"><g:link controller="event" action="show" id="${athleteInstance?.event?.id}">${athleteInstance?.event?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

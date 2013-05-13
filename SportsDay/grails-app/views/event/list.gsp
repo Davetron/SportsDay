@@ -24,9 +24,9 @@
 				<thead>
 					<tr>
 					
-						<g:sortableColumn property="mens" title="${message(code: 'event.mens.label', default: 'Mens')}" />
-					
 						<g:sortableColumn property="name" title="${message(code: 'event.name.label', default: 'Name')}" />
+					
+						<g:sortableColumn property="mens" title="${message(code: 'event.mens.label', default: 'Mens')}" />
 					
 						<g:sortableColumn property="time" title="${message(code: 'event.time.label', default: 'Time')}" />
 					
@@ -36,9 +36,9 @@
 				<g:each in="${eventInstanceList}" status="i" var="eventInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${eventInstance.id}">${fieldValue(bean: eventInstance, field: "mens")}</g:link></td>
+						<td><g:link action="show" id="${eventInstance.id}">${fieldValue(bean: eventInstance, field: "name")}</g:link></td>
 					
-						<td>${fieldValue(bean: eventInstance, field: "name")}</td>
+						<td><g:formatBoolean boolean="${eventInstance.mens}" /></td>
 					
 						<td><g:formatDate date="${eventInstance.time}" /></td>
 					

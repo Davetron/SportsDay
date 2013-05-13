@@ -4,10 +4,13 @@ class Country {
 
     static constraints = {
 		name unique:true
+		
     }
 
-	static hasMany = [athletes: Athlete]
-
 	String name
+	
+	public String toString() {
+		return name;
+	}
 
 }

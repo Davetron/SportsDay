@@ -5,8 +5,13 @@ class Athlete {
     static constraints = {
     }
 
-	static belongsTo = [country: Country]
+	static belongsTo = [event: Event]
 
-	String name
+	boolean dnf = false
+	Country country
+	
+	public String toString() {
+		return country
+	}
 
 }

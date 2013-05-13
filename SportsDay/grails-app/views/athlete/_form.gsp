@@ -7,14 +7,22 @@
 		<g:message code="athlete.country.label" default="Country" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="country" name="country.id" from="${com.sportsday.Country.list()}" optionKey="id" optionValue="name" required="" value="${athleteInstance?.country?.id}" class="many-to-one"/>
+	<g:select id="country" name="country.id" from="${com.sportsday.Country.list()}" optionKey="id" required="" value="${athleteInstance?.country?.id}" class="many-to-one"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: athleteInstance, field: 'name', 'error')} ">
-	<label for="name">
-		<g:message code="athlete.name.label" default="Name" />
+<div class="fieldcontain ${hasErrors(bean: athleteInstance, field: 'dnf', 'error')} ">
+	<label for="dnf">
+		<g:message code="athlete.dnf.label" default="Dnf" />
 		
 	</label>
-	<g:textField name="name" value="${athleteInstance?.name}"/>
+	<g:checkBox name="dnf" value="${athleteInstance?.dnf}" />
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: athleteInstance, field: 'event', 'error')} required">
+	<label for="event">
+		<g:message code="athlete.event.label" default="Event" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="event" name="event.id" from="${com.sportsday.Event.list()}" optionKey="id" required="" value="${athleteInstance?.event?.id}" class="many-to-one"/>
 </div>
 
