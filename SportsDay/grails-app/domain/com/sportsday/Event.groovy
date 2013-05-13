@@ -11,10 +11,10 @@ class Event {
 	String name
 	Calendar time = Calendar.getInstance()
 	boolean mens
-	List athletes
+	List<Athlete>athletes
 	
 	public String toString() {
-		return name + " " + athletes 
+		return name 
 	}
 
 }

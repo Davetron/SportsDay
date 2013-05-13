@@ -96,15 +96,6 @@ class BootStrap
 					day2Event.save(failOnError: true)
 				}
 			}
-
-			/*
-			 Event.all.each { event->
-			 Country.all.each { country->
-			 event.addToCountries(country)
-			 }
-			 event.save(failOnError: true)
-			 }
-			 */	
 		}
 
 		
@@ -116,11 +107,12 @@ class BootStrap
 			event.save(failOnError: true)
 		}
 		
-
+		/*
 		def eventList = Event.list(sort: "time", order: "asc")
 		eventList.each {
 			System.out.println(it)
 		}
+		*/
 	}
 	def destroy =
 	{
