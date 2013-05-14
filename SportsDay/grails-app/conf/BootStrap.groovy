@@ -86,6 +86,7 @@ class BootStrap
 					if (day1Event.name.contains("Men")) {
 						day1Event.mens = true
 					}
+					day1Event.name = day1Event.name.trim()
 					day1Event.save(failOnError: true)
 				}
 
@@ -93,6 +94,7 @@ class BootStrap
 					if (day2Event.name.contains("Men")) {
 						day2Event.mens = true
 					}
+					day2Event.name = day2Event.name.trim()
 					day2Event.save(failOnError: true)
 				}
 			}

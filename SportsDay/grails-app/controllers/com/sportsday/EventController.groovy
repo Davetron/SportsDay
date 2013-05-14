@@ -11,11 +11,12 @@ class EventController
 
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
-	def overallStandings(boolean mens)
+	def overallStandings()
 	{
 		Map<String, Integer> overallStandings = new HashMap<String, Integer>(Country.count);
 
-		Event.findAllWhere(mens:false).each
+		boolean isMensEvent = Boolean.parseBoolean(params.mens)
+		Event.findAllWhere(mens:isMensEvent).each
 		{ event ->
 			event.getAthletes().eachWithIndex
 			{ athlete, i ->
@@ -35,10 +36,22 @@ class EventController
 			}
 		}
 
-		//[overallStandings: overallStandings]
 		def results = MapUtil.sortByValue(overallStandings) 
-		render overallStandings as JSON
+		render results as JSON
 	}
+	
+	
+	def listEvents()
+	{
+		boolean isMensEvent = Boolean.parseBoolean(params.mens)
+		//List<Event> results = Event.findAllWhere(mens:isMensEvent, sort:"time")
+		def results = Event.findAll(sort:"time") {
+			mens == isMensEvent
+	   }
+		render results as JSON
+	}
+	
+	
 
 	def index()
 	{
