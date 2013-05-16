@@ -1,0 +1,74 @@
+<!doctype html>
+ 
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>jQuery UI Sortable - Drop placeholder</title>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css" />
+  
+  <style>
+  
+  #sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+  #sortable li { margin: 0 5px 5px 5px; padding: 5px; font-size: 1.2em; height: 1.5em; }
+  
+  /*
+  #sortable li { height: 1.5em; line-height: 1.2em; }
+  #sortable .ui-state-highlight { height: 1.5em; line-height: 1.2em; }
+  */
+  
+  #check1 .ui-selecting { background: #FECA40; }
+  #check1 .ui-selected { background: red; color: red; }
+  #check1label.ui-state-active { background: red; }
+	#check1label.ui-state-active span.ui-button-text { color: white; }
+  /*#check1 { margin: 0 5px 5px 5px; padding: 5px; font-size: 0.5em; height: 0.5em; }*/
+  #check1 { font-size: 0.5em; height: 0.5em; }
+  .ui-button .ui-button-text
+	{
+		line-height: 0.5;
+	}
+  
+  </style>
+  
+  <script>
+  $(function() {
+    $( "#sortable" ).sortable({
+      placeholder: "ui-state-highlight"
+    });
+    //$( "#sortable" ).disableSelection();
+	//$( "#sortable" ).selectable()
+  });
+  
+  $(function() {
+    $( "#check1" ).button();
+  });
+  
+  </script>
+</head>
+<body>
+ 
+ 
+ 
+<ul id="sortable">
+  <li class="ui-state-default">Ireland<input type="checkbox" id="check1" /><label id="check1label" for="check1">DNF</label></li>
+  <li class="ui-state-default">Bulgaria<input type="checkbox" id="check2" /><label for="check2">DNF</label></li>
+  <li class="ui-state-default">France<input type="checkbox" id="check3" /><label for="check3">DNF</label></li>
+  <li class="ui-state-default">Germany<input type="checkbox" id="check4" /><label for="check4">DNF</label></li>
+</ul>
+
+<!--
+<ul id="sortable">
+  <li class="ui-state-default">Item 1</li>
+  <li class="ui-state-default">Item 2</li>
+  <li class="ui-state-default">Item 3</li>
+  <li class="ui-state-default">Item 4</li>
+  <li class="ui-state-default">Item 5</li>
+  <li class="ui-state-default">Item 6</li>
+  <li class="ui-state-default">Item 7</li>
+</ul>
+ -->
+ 
+</body>
+</html>
