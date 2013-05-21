@@ -35,6 +35,14 @@ grails.mime.types = [
 // What URL patterns should be processed by the resources plugin
 grails.resources.adhoc.patterns = ['/images/*', '/css/*', '/js/*', '/plugins/*']
 
+grails.resources.modules = {
+		overrides {
+		'jquery-theme' {
+			resource id:'theme', url:'/css/start/jquery-ui-1.8.24.custom.css'
+		}
+		}
+}
+
 // The default codec used to encode data with ${}
 grails.views.default.codec = "none" // none, html, base64
 grails.views.gsp.encoding = "UTF-8"

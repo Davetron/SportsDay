@@ -15,8 +15,7 @@ class EventController
 	{
 		Map<String, Integer> overallStandings = new HashMap<String, Integer>(Country.count);
 
-		boolean isMensEvent = Boolean.parseBoolean(params.mens)
-		Event.findAllWhere(mens:isMensEvent).each
+		Event.findAll().each
 		{ event ->
 			event.getAthletes().eachWithIndex
 			{ athlete, i ->
@@ -44,14 +43,62 @@ class EventController
 	def listEvents()
 	{
 		boolean isMensEvent = Boolean.parseBoolean(params.mens)
-		//List<Event> results = Event.findAllWhere(mens:isMensEvent, sort:"time")
 		def results = Event.findAll(sort:"time") {
 			mens == isMensEvent
-	   }
+		}
 		render results as JSON
 	}
 	
+	def listDayEvents()
+	{
+		String day = params.day;
+		int dayToMatch;
+		if (day.equalsIgnoreCase("saturday")){
+			dayToMatch = Calendar.SATURDAY;
+		}
+		else if (day.equalsIgnoreCase("sunday")){
+			dayToMatch = Calendar.SUNDAY;
+		}
+		
+		List<Event> events = Event.findAll(sort:"time")
+		List<Event> results = new ArrayList<Event>(); 
+		for(Event event: events) {
+			if (event.time.get(Calendar.DAY_OF_WEEK) == dayToMatch)
+			{
+				results.add(event);
+			}
+		}
+		render results as JSON
+	}
 	
+	private List<Event> getDayEvents(String day) {
+		
+		int dayToMatch;
+		if (day.equalsIgnoreCase("saturday")){
+			dayToMatch = Calendar.SATURDAY;
+		}
+		else if (day.equalsIgnoreCase("sunday")){
+			dayToMatch = Calendar.SUNDAY;
+		}
+		
+		List<Event> events = Event.findAll(sort:"time")
+		List<Event> results = new ArrayList<Event>();
+		for(Event event: events) {
+			if (event.time.get(Calendar.DAY_OF_WEEK) == dayToMatch)
+			{
+				results.add(event);
+			}
+		}
+		
+		return results;
+	}
+	
+	def bootstrap()
+	{
+		def saturdayEvents = getDayEvents("saturday")
+		def sundayEvents = getDayEvents("sunday")
+		[eventInstanceList: Event.list(), eventInstanceTotal: Event.count(), saturdayEvents:saturdayEvents, sundayEvents:sundayEvents ]
+	}
 
 	def index()
 	{
