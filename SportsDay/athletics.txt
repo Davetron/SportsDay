@@ -1,0 +1,29 @@
+12:30 Hammer Throw Men 12:15 Hammer Throw Women
+13:31 Shot Put Men 13:26 Shot Put Women
+13:36 Long Jump Men 13:33 Long Jump Women
+13:45 400m Hurdles Heat 1 Men 13:45 110m Hurdles Heat 1 Men
+13:51 400m Hurdles Heat 2 Men 13:52 110m Hurdles Heat 2 Men
+13:57 Pole Vault Women 13:56 Discus Throw Men
+14:01 100m Heat 1 Women 13:58 Pole Vault Men
+14:07 100m Heat 2 Women 14:01 200m Heat 1 Women
+14:12 Discus Throw Women 14:07 200m Heat 2 Women
+14:21 High Jump Men 14:16 High Jump Women
+14:23 400m Heat 1 Men 14:19 800m Men
+14:31 400m Heat 2 Men 14:30 100m Hurdles Heat 1 Women
+14:39 800m Women 14:37 100m Hurdles Heat 2 Women
+14:49 100m Heat 1 Men 14:48 3000m Men
+14:55 100m Heat 2 Men 15:03 200m Heat 1 Men
+15:05 3000m Women 15:09 200m Heat 2 Men
+15:22 400m Hurdles Heat 1 Women 15:15 1500m Women
+15:28 400m Hurdles Heat 2 Women 15:22 Triple Jump Men
+15:32 Triple Jump Women 15:23 5000m Women
+15:34 1500m Men 15:42 Javelin Throw Men
+15:42 3000m Steeplechase Women 15:43 3000m Steeplechase Men
+15:56 400m Heat 1 Women 15:58 4x400m Heat 1 Women
+15:59 Javelin Throw Women 16:09 4x400m Heat 2 Women
+16:02 400m Heat 2 Women 16:20 4x400m Heat 1 Men
+16:09 5000m Men 16:31 4x400m Heat 2 Men
+16:29 4x100m Heat 1 Women
+16:39 4x100m Heat 2 Women
+16:49 4x100m Heat 1 Men
+16:59 4x100m Heat 2 Men
