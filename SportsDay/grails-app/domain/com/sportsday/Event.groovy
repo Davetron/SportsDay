@@ -3,7 +3,8 @@ package com.sportsday
 class Event {
 
     static constraints = {
-		name blank:false, unique: true
+		name (blank:false, unique: true)
+		athletes (size: 0..12)
     }
 
 	static hasMany = [athletes: Athlete]

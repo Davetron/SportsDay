@@ -10,6 +10,8 @@ class BootStrap
 
 		if (!Country.count())
 		{
+			System.out.println("Iniitialising Countries")
+			
 			new Country(name: "Belgium", ).save(failOnError: true)
 			new Country(name: "Bulgaria", ).save(failOnError: true)
 			new Country(name: "Czech Republic", ).save(failOnError: true)
@@ -26,6 +28,8 @@ class BootStrap
 
 		if (!Event.count())
 		{
+			
+			System.out.println("Iniitialising Events")
 			String eventFile = "C:\\Users\\dconnolly.CELTICTIGER\\Documents\\athletics.txt"
 			File file = new File(eventFile)
 			

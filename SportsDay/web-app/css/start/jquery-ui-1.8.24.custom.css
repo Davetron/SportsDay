@@ -1846,6 +1846,8 @@ body .ui-tooltip {
 	background-color: #999;
 }
 
+/* CUSTOM CSS */
+
 #headerbar {
 	background-color: black;
 	color: white;
@@ -1883,15 +1885,39 @@ body .ui-tooltip {
 	height: 1em;
 }
 
-
 html>body .sortable li {
-	height: 1em;
-	line-height: 1em;
+	height: 1.5em;
+	line-height: 1.5em;
 }
 
 .ui-state-highlight {
 	height: 1.5em;
-	line-height: 1.2em;
+	line-height: 1.5em;
+}
+
+.placing {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 20%;
+}
+
+.placing li {
+	margin: 0 5px 5px 5px;
+	padding: 5px;
+	font-size: 1em;
+	height: 1.5em;
+	line-height: 1.5em;
+}
+
+html>body .placing li {
+	height: 1.5em;
+	line-height: 1.5em;
+}
+
+.ui-ranking-highlight {
+	height: 1.5em;
+	line-height: 1.5em;
 }
 
 .eventPanel {

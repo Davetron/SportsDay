@@ -10,14 +10,21 @@ class EventController
 {
 
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+	
+	private static String ATHLETE_ID = "athleteId";
 
 	def overallStandings()
 	{
 		Map<String, Integer> overallStandings = new HashMap<String, Integer>(Country.count);
 
-		Event.findAll().each
+		List<Event> allEvents = Event.findAll()
+		
+		allEvents.each
 		{ event ->
-			event.getAthletes().eachWithIndex
+
+			List<Athlete> athletes = event.athletes
+
+			athletes.eachWithIndex 
 			{ athlete, i ->
 				if (!athlete.dnf)
 				{
@@ -35,34 +42,36 @@ class EventController
 			}
 		}
 
-		def results = MapUtil.sortByValue(overallStandings) 
+		def results = MapUtil.sortByValue(overallStandings)
 		render results as JSON
 	}
-	
-	
+
+
 	def listEvents()
 	{
 		boolean isMensEvent = Boolean.parseBoolean(params.mens)
-		def results = Event.findAll(sort:"time") {
-			mens == isMensEvent
-		}
+		def results = Event.findAll(sort:"time")
+		{ mens == isMensEvent }
 		render results as JSON
 	}
-	
+
 	def listDayEvents()
 	{
 		String day = params.day;
 		int dayToMatch;
-		if (day.equalsIgnoreCase("saturday")){
+		if (day.equalsIgnoreCase("saturday"))
+		{
 			dayToMatch = Calendar.SATURDAY;
 		}
-		else if (day.equalsIgnoreCase("sunday")){
+		else if (day.equalsIgnoreCase("sunday"))
+		{
 			dayToMatch = Calendar.SUNDAY;
 		}
-		
+
 		List<Event> events = Event.findAll(sort:"time")
-		List<Event> results = new ArrayList<Event>(); 
-		for(Event event: events) {
+		List<Event> results = new ArrayList<Event>();
+		for(Event event: events)
+		{
 			if (event.time.get(Calendar.DAY_OF_WEEK) == dayToMatch)
 			{
 				results.add(event);
@@ -70,29 +79,33 @@ class EventController
 		}
 		render results as JSON
 	}
-	
-	private List<Event> getDayEvents(String day) {
-		
+
+	private List<Event> getDayEvents(String day)
+	{
+
 		int dayToMatch;
-		if (day.equalsIgnoreCase("saturday")){
+		if (day.equalsIgnoreCase("saturday"))
+		{
 			dayToMatch = Calendar.SATURDAY;
 		}
-		else if (day.equalsIgnoreCase("sunday")){
+		else if (day.equalsIgnoreCase("sunday"))
+		{
 			dayToMatch = Calendar.SUNDAY;
 		}
-		
+
 		List<Event> events = Event.findAll(sort:"time")
 		List<Event> results = new ArrayList<Event>();
-		for(Event event: events) {
+		for(Event event: events)
+		{
 			if (event.time.get(Calendar.DAY_OF_WEEK) == dayToMatch)
 			{
 				results.add(event);
 			}
 		}
-		
+
 		return results;
 	}
-	
+
 	def bootstrap()
 	{
 		def saturdayEvents = getDayEvents("saturday")
@@ -162,6 +175,41 @@ class EventController
 		}
 
 		[eventInstance: eventInstance]
+	}
+
+	def updateEventResults()
+	{
+		def info = params;
+		String eventId = params.eventId;
+		Event event = Event.get(eventId);
+
+		if (!event)
+		{
+			response.status = 304;
+			render ""
+		}
+		else
+		{
+			List<Athlete>athletes = event.athletes
+			for(String parameter : params)
+			{
+				System.out.println(parameter)
+				if (parameter.startsWith(ATHLETE_ID)) {
+					String result = parameter.substring(ATHLETE_ID.length())
+					System.out.println("result:" + result)
+					String [] resultDetail = result.split("=")
+					String athleteId = resultDetail[0]
+					Athlete athlete = Athlete.get(athleteId);
+					int rank = Integer.parseInt(resultDetail[1]) - 1
+					System.out.println("Setting athlete " + athleteId + " to rank " + rank  + ".     Size:" + athletes.size());
+					athletes.set(rank, athlete);
+				}
+			}
+			event.athletes = athletes;
+			event.save(flush: true)
+			response.status = 200
+			render ""
+		}
 	}
 
 	def update(Long id, Long version)
